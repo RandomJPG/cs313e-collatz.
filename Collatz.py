@@ -10,6 +10,10 @@
 # collatz_read
 # ------------
 
+# Sets up a global cache
+cache=[0] * 1000000
+cache[1]=1
+
 def collatz_read (r) :
     """
     read two ints
@@ -18,7 +22,7 @@ def collatz_read (r) :
     """
     s = r.readline()
     if s == "" :
-        return []
+        return False
     a = s.split()
     return [int(v) for v in a]
 
@@ -30,11 +34,45 @@ def collatz_eval (i, j) :
     """
     i the beginning of the range, inclusive
     j the end       of the range, inclusive
+	
     return the max cycle length of the range [i, j]
     """
-    # <your code>
+	
     return 1
+	
+	
+# ------------
+# cycle_length
+# ------------
 
+def cycle_length (n) :
+    """
+    n is an integer >0
+	return the cycle length of n
+	"""
+	
+	# Preconditions
+    assert n > 0
+    global cache
+	
+	# If n is already in cache
+    if (n < 1000000 and cache[n] != 0):
+        return cache[n]
+	
+	# If n is not in cache
+    if ((n%2) == 0):
+        num=n // 2
+        cyclelength= 1 + cycle_length(num)
+    else:
+        num= n + (n // 2) + 1
+        cyclelength= 2 + cycle_length(num)
+	
+    if (n < 1000000):
+        cache[n]= cycle_length
+
+    assert cyclelength > 0
+    return cyclelength
+	
 # -------------
 # collatz_print
 # -------------
