@@ -1,9 +1,6 @@
-#!/usr/bin/env python3
-
 # -------------------------------
-# projects/collatz/TestCollatz.py
-# Copyright (C) 2014
-# Glenn P. Downing
+# Jacob Garcia
+# jg56492
 # -------------------------------
 
 # -------
@@ -24,127 +21,154 @@ class TestCollatz (TestCase) :
     # read
     # ----
 
-    def test_read (self) :
+	# Given
+    def test_read_1 (self) :
         r    = StringIO("1 10\n100 200\n201 210\n900 1000\n")
         i, j = collatz_read(r)
         self.assertEqual(i,  1)
         self.assertEqual(j, 10)
+	
+	# Tests second line
+    def test_read_2 (self) :
+        r    = StringIO("10 100\n100 200\n201 210\n900 1000\n")
+        i, j = collatz_read(r)
+        i, j = collatz_read(r)		
+        self.assertEqual(i,  100)
+        self.assertEqual(j,  200)
 
+	# Tests extra spacing between numbers	
+    def test_read_3 (self) :
+        r    = StringIO("1    10")
+        i, j = collatz_read(r)
+        j    = collatz_read(r)		
+        self.assertEqual(i, 1)
+        self.assertEqual(j, 10)
+
+	# Tests extra spacing after numbers
+    def test_read_4 (self) :
+        r    = StringIO("1 10    ")
+        i, j = collatz_read(r)
+        self.assertEqual(i,  1)
+        self.assertEqual(j, 10)
+
+	# Tests same string
+    def test_read_5 (self) :
+        r    = StringIO("10 10")
+        i, j = collatz_read(r)
+        self.assertEqual(i, 10)
+        self.assertEqual(j, 10)	
+		
     # ----
     # eval
     # ----
 
+	# Given
     def test_eval_1 (self) :
         v = collatz_eval(1, 10)
         self.assertEqual(v, 20)
 
+	# Given	
     def test_eval_2 (self) :
         v = collatz_eval(100, 200)
         self.assertEqual(v, 125)
 
+	# Given	
     def test_eval_3 (self) :
         v = collatz_eval(201, 210)
         self.assertEqual(v, 89)
 
+	# Given	
     def test_eval_4 (self) :
         v = collatz_eval(900, 1000)
         self.assertEqual(v, 174)
 
+	# Tests same numbers
+    def test_eval_5 (self) :
+        v = collatz_eval(900, 900)
+        self.assertEqual(v, 55)
+		
+	# Tests reverse order
+    def test_eval_6 (self) :
+        v = collatz_eval(10, 1)
+        self.assertEqual(v, 20)
+		
+	# Tests corner case
+    def test_eval_7 (self) :
+        v = collatz_eval(1, 999999)
+        self.assertEqual(v, 525)
+		
+	# Tests failure case
+    def test_eval_8 (self) :
+        v = collatz_eval(-1, 1)
+        self.assertEqual(v, False)
+		
     # -----
     # print
     # -----
 
-    def test_print (self) :
+	# Given
+    def test_print_1 (self) :
         w = StringIO()
         collatz_print(w, 1, 10, 20)
         self.assertEqual(w.getvalue(), "1 10 20\n")
-
+	
+	# Test corner case	
+    def test_print_2 (self) :
+        w = StringIO()
+        collatz_print(w, 1, 999999, 525)
+        self.assertEqual(w.getvalue(), "1 999999 525\n")
+	
+	# Tests same number
+    def test_print_3 (self) :
+        w = StringIO()
+        collatz_print(w, 900, 900, 55)
+        self.assertEqual(w.getvalue(), "900 900 55\n")	
+   
+	# Tests reverse order
+    def test_print_4 (self) :
+        w = StringIO()
+        collatz_print(w, 10, 1, 20)
+        self.assertEqual(w.getvalue(), "10 1 20\n")			
     # -----
     # solve
     # -----
 
-    def test_solve (self) :
+	# Given
+    def test_solve_1 (self) :
         r = StringIO("1 10\n100 200\n201 210\n900 1000\n")
         w = StringIO()
         collatz_solve(r, w)
         self.assertEqual(w.getvalue(), "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n")
-
+	
+	# Tests empty string	
+    def test_solve_2 (self) :
+        r = StringIO("")
+        w = StringIO()
+        collatz_solve(r, w)
+        self.assertEqual(w.getvalue(), "")
+    
+	# Tests corner case
+    def test_solve_3 (self) :
+        r = StringIO("1 999999\n")
+        w = StringIO()
+        collatz_solve(r, w)
+        self.assertEqual(w.getvalue(), "1 999999 525\n")
+		
+	# Tests same number	
+    def test_solve_4 (self) :
+        r = StringIO("900 900\n")
+        w = StringIO()
+        collatz_solve(r, w)
+        self.assertEqual(w.getvalue(), "900 900 55\n")
+		
+	# Tests reverse order	
+    def test_solve_5 (self) :
+        r = StringIO("10 1\n")
+        w = StringIO()
+        collatz_solve(r, w)
+        self.assertEqual(w.getvalue(), "10 1 20\n")		
 # ----
 # main
 # ----
 
 main()
-
-"""
-% coverage3 run --branch TestCollatz.py
-FFFF..F
-======================================================================
-FAIL: test_eval_1 (__main__.TestCollatz)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "TestCollatz.py", line 47, in test_eval_1
-    self.assertEqual(v, 20)
-AssertionError: 1 != 20
-
-======================================================================
-FAIL: test_eval_2 (__main__.TestCollatz)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "TestCollatz.py", line 51, in test_eval_2
-    self.assertEqual(v, 125)
-AssertionError: 1 != 125
-
-======================================================================
-FAIL: test_eval_3 (__main__.TestCollatz)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "TestCollatz.py", line 55, in test_eval_3
-    self.assertEqual(v, 89)
-AssertionError: 1 != 89
-
-======================================================================
-FAIL: test_eval_4 (__main__.TestCollatz)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "TestCollatz.py", line 59, in test_eval_4
-    self.assertEqual(v, 174)
-AssertionError: 1 != 174
-
-======================================================================
-FAIL: test_solve (__main__.TestCollatz)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "TestCollatz.py", line 78, in test_solve
-    self.assertEqual(w.getvalue(), "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n")
-AssertionError: '1 10 1\n100 200 1\n201 210 1\n900 1000 1\n' != '1 10 20\n100 200 125\n201 210 89\n900 1000 174\n'
-- 1 10 1
-?      ^
-+ 1 10 20
-?      ^^
-- 100 200 1
-+ 100 200 125
-?          ++
-- 201 210 1
-?         ^
-+ 201 210 89
-?         ^^
-- 900 1000 1
-+ 900 1000 174
-?           ++
-
-
-----------------------------------------------------------------------
-Ran 7 tests in 0.004s
-
-FAILED (failures=5)
-
-
-
-% coverage3 report -m
-Name           Stmts   Miss Branch BrMiss  Cover   Missing
-----------------------------------------------------------
-Collatz          18      0      6      0   100%
-TestCollatz      33      1      0      0    97%   86
-----------------------------------------------------------
-TOTAL            51      1      6      0    98%
-"""
