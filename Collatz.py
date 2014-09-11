@@ -37,8 +37,23 @@ def collatz_eval (i, j) :
 	
     return the max cycle length of the range [i, j]
     """
+    
+    max = 0
+    m = j // 2
 	
-    return 1
+    if (i < m):
+        for num in range(m, j + 1):
+            cycle = cycle_length(num)
+            if (cycle>max):
+                max = cycle			
+    else:
+            for num in range(i, j + 1):
+			    cycle = cylce_length(num)
+				if (cycle>max):
+				    max=cycle
+	
+	assert max > 0
+	return max
 	
 	
 # ------------
@@ -54,6 +69,7 @@ def cycle_length (n) :
 	# Preconditions
     assert n > 0
     global cache
+    cyclelength = 1
 	
 	# If n is already in cache
     if (n < 1000000 and cache[n] != 0):
@@ -67,9 +83,10 @@ def cycle_length (n) :
         num= n + (n // 2) + 1
         cyclelength= 2 + cycle_length(num)
 	
+	# Add to cache
     if (n < 1000000):
-        cache[n]= cycle_length
-
+        cache[n]= cyclelength
+	
     assert cyclelength > 0
     return cyclelength
 	
