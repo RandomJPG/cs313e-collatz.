@@ -1,0 +1,89 @@
+[33mcommit 10c41d0b59874d3574fee83d37c249ede5248094[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 23:06:25 2014 -0500
+
+    Added Collatz.html and UTEID and name to each file
+
+[33mcommit 79883864d59359cc8e7c827f20698ae296dd5682[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 22:06:36 2014 -0500
+
+    Acceptance tests
+
+[33mcommit 2766e6b87212e5c2f7e5ea4b41a781c54c0c2e19[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 22:05:08 2014 -0500
+
+    Created acceptance tests
+
+[33mcommit d56d5075c1dcaeea068768d0dfc37cc2c22a8fbc[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 20:35:49 2014 -0500
+
+    SphereCollatz.py accepted into Sphere. Take that, science.
+
+[33mcommit 59290e2cc4cfff5e4fcf2191562ea8f1aa7c8efd[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 20:22:25 2014 -0500
+
+    Created SphereCollatz.py
+
+[33mcommit b5dc40684c09d9ed6a0148cacca0c595921e1360[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 20:19:10 2014 -0500
+
+    Fixed unit tests, passed all unit tests
+
+[33mcommit 7d433e5909a2eeb3bfd20d5177b72bfbc0c30a7c[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 20:16:37 2014 -0500
+
+    Fixed max issue in collatz_eval
+
+[33mcommit 35806cc6b6628ec200a7db1f286cc3c1098584c6[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 20:02:38 2014 -0500
+
+    Added preconditions to collatz_eval
+
+[33mcommit 7858eb43f9a1694f6a5b44a4ef186af58ea3163a[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 19:41:28 2014 -0500
+
+    Fixed cycle_length to work with short numbers, currently testing longer numbers
+
+[33mcommit 0b334ff5ab19cc664af74e234c88d40692becd81[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Wed Sep 10 18:49:53 2014 -0500
+
+    Created function cycle_length in Collatz.py, generated unit tests for cycle_length in TestCollatz.py, cycle_length not working for larger numbers
+
+[33mcommit aa2d44f9b8bd6e66a7a5bbe7043510d714044adb[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Tue Sep 9 21:31:43 2014 -0500
+
+    Added more unit tests to TestCollatz.py
+
+[33mcommit 5e44aaa1b0ad9d05db62ac8f751ed31c41222b99[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Tue Sep 9 19:02:55 2014 -0500
+
+    Fixed given unit tests, confirmed expected failures, and added, commited, and pushed to private repo
+
+[33mcommit c65ec0d9394ee7c0c2ac2804c2dd2bc09dc390f1[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Mon Sep 8 22:08:49 2014 -0500
+
+    Copyied Collatz.py from public repo, no changes made
+
+[33mcommit f0a98bf95da54cb4f993f5fb4c6586a70ee8fdf5[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Mon Sep 8 21:59:10 2014 -0500
+
+    add RunCollatz.py
+
+[33mcommit bc7716b5ab598afbd60560edb3714554930a0654[m
+Author: Jacob Garcia <jpgarcia39@yahoo.com>
+Date:   Sun Sep 7 12:07:36 2014 -0500
+
+    Initial commit
