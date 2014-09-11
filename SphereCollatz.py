@@ -1,10 +1,7 @@
-#!/usr/bin/env python3
-
-# ---------------------------
-# projects/collatz/SphereCollatz.py
-# Copyright (C) 2014
-# Glenn P. Downing
-# ---------------------------
+# -------------------------------
+# Jacob Garcia
+# jg56492
+# -------------------------------
 
 # ------------
 # collatz_read
