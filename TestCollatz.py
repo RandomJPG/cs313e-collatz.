@@ -42,7 +42,7 @@ class TestCollatz (TestCase) :
         i, j = collatz_read(r)
         j    = collatz_read(r)		
         self.assertEqual(i, 1)
-        self.assertEqual(j, 10)
+        self.assertEqual(j, False)
 
 	# Tests extra spacing after numbers
     def test_read_4 (self) :
@@ -96,12 +96,7 @@ class TestCollatz (TestCase) :
     def test_eval_7 (self) :
         v = collatz_eval(1, 999999)
         self.assertEqual(v, 525)
-		
-	# Tests failure case
-    def test_eval_8 (self) :
-        v = collatz_eval(-1, 1)
-        self.assertEqual(v, False)
-	
+			
 	# -----
     # cycle_length
     # -----
