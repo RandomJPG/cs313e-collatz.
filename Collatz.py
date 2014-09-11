@@ -43,29 +43,29 @@ def collatz_eval (i, j) :
     assert (j > 0 and j < 1000000)
 
 	# Swaps i and j if needed
-    if (j > i):
-        temp = i
-        i = j
-        j = temp
-    assert i >= j		
+    if (i > j):
+        temp = j
+        j = i
+        i = temp
+    assert j >= i		
 	
 	# Sets max and creates m, the middle of i and j
-    max = 0
+    max_cycle = 0
     m = j // 2
 	
     if (i < m):
         for num in range(m, j + 1):
             cycle= cycle_length(num)
-            if (cycle > max):
-                max = cycle			
+            if (cycle > max_cycle):
+                max_cycle = cycle			
     else:
         for num in range(i, j + 1):
             cycle = cycle_length(num)
-            if (cycle > max):
-               max = cycle
+            if (cycle > max_cycle):
+               max_cycle = cycle
 	
-    assert max > 0
-    return max
+    assert max_cycle > 0
+    return max_cycle
 	
 	
 # ------------
