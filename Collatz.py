@@ -38,22 +38,34 @@ def collatz_eval (i, j) :
     return the max cycle length of the range [i, j]
     """
     
+    # Preconditions
+    assert (i > 0 and i < 1000000)
+    assert (j > 0 and j < 1000000)
+
+	# Swaps i and j if needed
+    if (j > i):
+        temp = i
+        i = j
+        j = temp
+    assert i >= j		
+	
+	# Sets max and creates m, the middle of i and j
     max = 0
     m = j // 2
 	
     if (i < m):
         for num in range(m, j + 1):
-            cycle = cycle_length(num)
-            if (cycle>max):
+            cycle= cycle_length(num)
+            if (cycle > max):
                 max = cycle			
     else:
-            for num in range(i, j + 1):
-			    cycle = cylce_length(num)
-				if (cycle>max):
-				    max=cycle
+        for num in range(i, j + 1):
+            cycle = cycle_length(num)
+            if (cycle > max):
+               max = cycle
 	
-	assert max > 0
-	return max
+    assert max > 0
+    return max
 	
 	
 # ------------
