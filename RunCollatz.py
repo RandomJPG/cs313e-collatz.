@@ -11,6 +11,7 @@
 # -------
 
 import sys
+import random
 
 from Collatz import collatz_solve
 
@@ -20,6 +21,24 @@ from Collatz import collatz_solve
 
 collatz_solve(sys.stdin, sys.stdout)
 
+def acceptance_test_gen():
+	"""
+	Creates acceptance tests by 
+	generating random paired numbers
+	"""
+	
+	for x in range(2000):
+		i = random.randint(1, 1000000)
+		j = random.randint(1, 1000000)
+		
+		if (i == j) :
+			j = random.randint(1,1000000)
+	
+		line = str(i) + " " + str(j)
+	
+		print (line)
+
+acceptance_test_gen()		
 """
 % cat RunCollatz.in
 1 10
