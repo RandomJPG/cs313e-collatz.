@@ -9,13 +9,6 @@
 # ------------
 # collatz_read
 # ------------
-from Collatz import collatz_solve
-
-# ----
-# main
-# ----
-
-collatz_solve(sys.stdin, sys.stdout)
 
 # Sets up a global cache
 cache=[0] * 1000000
@@ -139,3 +132,7 @@ def collatz_solve (r, w) :
         i, j = a
         v = collatz_eval(i, j)
         collatz_print(w, i, j, v)
+
+import sys
+		
+collatz_solve(sys.stdin, sys.stdout)		
